@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using IdentityCore.Data;
+using IdentityCore.Models;
 using IdentityCore.Models.IdentityModels;
 using IdentityCore.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -12,15 +14,17 @@ namespace IdentityCore.Controllers
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<ApplicationRole> _roleManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ApplicationDbContext _dbContext;
 
         //Dependency Injection
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext dbContext)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext dbContext, RoleManager<ApplicationRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _dbContext = dbContext;
+            _roleManager = roleManager;
         }
 
         [HttpGet]
@@ -48,6 +52,15 @@ namespace IdentityCore.Controllers
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
+                await CreateRoles();
+                if (_userManager.Users.Count() == 1)
+                {
+                    await _userManager.AddToRoleAsync(user, IdentityRoles.Admin.ToString());
+                }
+                else
+                {
+                    await _userManager.AddToRoleAsync(user, IdentityRoles.User.ToString());
+                }
                 return RedirectToAction(nameof(Login));
             }
             else
@@ -89,6 +102,22 @@ namespace IdentityCore.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+
+        private async Task CreateRoles()
+        {
+            var roleNames = Enum.GetNames(typeof(IdentityRoles));
+            foreach (var roleName in roleNames)
+            {
+                if (!_roleManager.RoleExistsAsync(roleName).Result)
+                {
+                    await _roleManager.CreateAsync(new ApplicationRole()
+                    {
+                        Name = roleName
+                    });
+                }
+            }
         }
     }
 }

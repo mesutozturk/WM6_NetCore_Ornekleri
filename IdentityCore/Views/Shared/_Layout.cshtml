@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using IdentityCore.Models.IdentityModels
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<ApplicationUser> UserManager
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -40,12 +45,25 @@
     </nav>
 
     <partial name="_CookieConsentPartial" />
-
+    
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
             <p>&copy; 2019 - IdentityCore</p>
+            @if (Context.User.IsInRole("Admin"))
+            {
+                <h2>Admin</h2>
+            }
+            else if(Context.User.IsInRole("User"))
+            {
+                <h2>User</h2>
+            }
+            else
+            {
+                
+                <h2>Anonym</h2>
+            }
         </footer>
     </div>
 

@@ -37,7 +37,8 @@ namespace IdentityCore
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("DefaultConnection")))
+                .AddAuthorization();
 
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddRoles<ApplicationRole>()
@@ -71,10 +72,9 @@ namespace IdentityCore
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
 
                 options.LoginPath = "/Account/Login";
-                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.AccessDeniedPath = "/Account/Login";
                 options.SlidingExpiration = true;
             });
-
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -97,6 +97,7 @@ namespace IdentityCore
             app.UseStaticFiles();
 
             app.UseAuthentication();
+
 
             app.UseMvc(routes =>
             {

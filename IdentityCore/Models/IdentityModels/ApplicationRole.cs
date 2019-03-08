@@ -5,7 +5,7 @@ namespace IdentityCore.Models.IdentityModels
 {
     public class ApplicationRole : IdentityRole
     {
-        [Required, StringLength(128)]
+        [StringLength(128)]
         public string Description { get; set; }
     }
 }
