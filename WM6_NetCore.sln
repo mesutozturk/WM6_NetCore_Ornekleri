@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreGiris", "CoreGiris\Core
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ders2", "Ders2", "{7CDF21A5-21AE-4528-8AD8-DDE3FEE47D39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreIdentity", "CoreIdentity\CoreIdentity.csproj", "{C6A20519-6DF9-4BB0-8535-5AF3A96E0252}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,17 +19,12 @@ Global
 		{1B585EFE-F1E5-43E1-8A16-C0297D9458ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B585EFE-F1E5-43E1-8A16-C0297D9458ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B585EFE-F1E5-43E1-8A16-C0297D9458ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C6A20519-6DF9-4BB0-8535-5AF3A96E0252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C6A20519-6DF9-4BB0-8535-5AF3A96E0252}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C6A20519-6DF9-4BB0-8535-5AF3A96E0252}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C6A20519-6DF9-4BB0-8535-5AF3A96E0252}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1B585EFE-F1E5-43E1-8A16-C0297D9458ED} = {5604A71A-5626-4BEC-82EE-51B29564BEB9}
-		{C6A20519-6DF9-4BB0-8535-5AF3A96E0252} = {7CDF21A5-21AE-4528-8AD8-DDE3FEE47D39}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1732BCB7-1C08-4A54-8815-71F018AB5021}
