@@ -1,0 +1,28 @@
+﻿@model IdentityCore.Models.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form asp-controller="Account" asp-action="Login" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName">Kullanıcı Adı</label>
+                <input type="text" asp-for="UserName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">Şifre</label>
+                <input type="password" asp-for="Password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="RememberMe">Beni Hatırla</label>
+                <input type="checkbox" asp-for="RememberMe" class="checkbox" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+</div>
