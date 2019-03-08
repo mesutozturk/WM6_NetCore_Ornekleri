@@ -1,0 +1,45 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>Register</h2>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-controller="Account" asp-action="Register" novalidate="novalidate">
+            <h4>Create a new account.</h4>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <hr>
+            <div class="text-danger validation-summary-valid" data-valmsg-summary="true">
+                <ul>
+                    <li style="display:none"></li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name">Ad</label>
+                <input asp-for="Name" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname">Soyad</label>
+                <input asp-for="Surname" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName">Kullanıcı Adı</label>
+                <input asp-for="UserName" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email">E Mail</label>
+                <input asp-for="Email" type="email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">Şifre</label>
+                <input asp-for="Password" type="password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword">Şifre Tekrar</label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-default">Register</button>
+        </form>
+    </div>
+</div>

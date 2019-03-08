@@ -48,7 +48,7 @@ namespace CoreGiris
             }
 
             app.UseStaticFiles();
-            
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
