@@ -9,6 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Kuzey.BLL.Repository;
+using Kuzey.BLL.Repository.Abstracts;
+using Kuzey.Models.Entities;
 
 namespace Kuzey.UI.Web
 {
@@ -34,8 +37,10 @@ namespace Kuzey.UI.Web
             services.AddDbContext<MyContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<MyContext>();
+
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -68,6 +73,9 @@ namespace Kuzey.UI.Web
                 options.AccessDeniedPath = "/Account/Login";
                 options.SlidingExpiration = true;
             });
+
+            services.AddScoped<IRepository<Category, int>, CategoryRepo>();
+            services.AddScoped<IRepository<Product, string>, ProductRepo>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
