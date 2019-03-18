@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Linq;
+using Kuzey.BLL.Repository;
 
 namespace Kuzey.UI.Web.Controllers
 {
@@ -51,7 +52,7 @@ namespace Kuzey.UI.Web.Controllers
                 });
             }
 
-            var data = _categRepo.GetAll("Category");
+            var data = ((ProductRepo)_productRepo).GetAll("Category");
 
             return View(data);
         }

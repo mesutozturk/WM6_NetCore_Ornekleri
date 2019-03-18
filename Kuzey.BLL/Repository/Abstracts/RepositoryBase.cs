@@ -10,8 +10,8 @@ namespace Kuzey.BLL.Repository.Abstracts
 {
     public abstract class RepositoryBase<T, TId> : IRepository<T, TId> where T : BaseEntity<TId>
     {
-        private readonly MyContext DbContext;
-        private readonly DbSet<T> DbObject;
+        internal readonly MyContext DbContext;
+        internal readonly DbSet<T> DbObject;
 
         internal RepositoryBase(MyContext dbContext)
         {
