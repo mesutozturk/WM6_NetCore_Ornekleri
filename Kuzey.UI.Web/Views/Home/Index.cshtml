@@ -1,4 +1,4 @@
-﻿@model List<Kuzey.Models.Entities.Category>
+﻿@model List<Kuzey.Models.Entities.Product>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -60,7 +60,7 @@
         <ul>
             @foreach (var item in Model)
             {
-                @*<li>@item.ProductName - @item.UnitPrice - @item.CategoryName</li>*@
+                <li>@item.ProductName - @item.UnitPrice - @item.Category?.CategoryName</li>
             }
         </ul>
     </div>
