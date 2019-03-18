@@ -15,7 +15,7 @@ namespace IdentityCore.Controllers
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin,User")]
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
@@ -29,7 +29,7 @@ namespace IdentityCore.Controllers
 
             return View();
         }
-        [Authorize(Roles = "Admin,User")]
+
         public IActionResult Privacy()
         {
             return View();
