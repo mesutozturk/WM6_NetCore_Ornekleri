@@ -18,32 +18,14 @@ namespace Kuzey.BLL.Repository.Abstracts
             DbContext = dbContext;
             DbObject = DbContext.Set<T>();
         }
-        public List<T> GetAll()
+        public IQueryable<T> GetAll()
         {
-            return DbObject.ToList();
+            return DbObject;
         }
 
-        public List<T> GetAll(Func<T, bool> predicate)
+        public IQueryable<T> GetAll(Func<T, bool> predicate)
         {
-            return DbObject.Where(predicate).ToList();
-        }
-
-        public List<T> GetAll(params string[] includes)
-        {
-            foreach (var inc in includes)
-            {
-                DbObject.Include(inc);
-            }
-            return DbObject.ToList();
-        }
-
-        public List<T> GetAll(Func<T, bool> predicate, params string[] includes)
-        {
-            foreach (var inc in includes)
-            {
-                DbObject.Include(inc);
-            }
-            return DbObject.Where(predicate).ToList();
+            return DbObject.Where(predicate).AsQueryable();
         }
 
         public T GetById(TId id)
@@ -60,7 +42,7 @@ namespace Kuzey.BLL.Repository.Abstracts
         public virtual void Delete(T entity)
         {
             DbObject.Remove(entity);
-            DbContext.SaveChanges();
+            this.Save();
         }
 
         public virtual void Update(T entity)
@@ -74,20 +56,6 @@ namespace Kuzey.BLL.Repository.Abstracts
         public void Save()
         {
             DbContext.SaveChanges();
-        }
-
-        public IQueryable<T> Queryable()
-        {
-            return DbObject.AsQueryable();
-        }
-
-        public IQueryable<T> Queryable(params string[] includes)
-        {
-            foreach (var inc in includes)
-            {
-                DbObject.Include(inc);
-            }
-            return DbObject.AsQueryable<T>();
         }
     }
 }

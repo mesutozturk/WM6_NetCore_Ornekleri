@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Kuzey.BLL.Account;
 using Kuzey.BLL.Repository;
 using Kuzey.BLL.Repository.Abstracts;
 using Kuzey.Models.Entities;
@@ -38,9 +39,12 @@ namespace Kuzey.UI.Web
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, ApplicationRole>()
-                .AddEntityFrameworkStores<MyContext>();
+            //services.AddIdentity<ApplicationUser, ApplicationRole>()
+            //    .AddEntityFrameworkStores<MyContext>();
 
+            services.AddDefaultIdentity<ApplicationUser>()
+                .AddRoles<ApplicationRole>()
+                .AddEntityFrameworkStores<MyContext>();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -76,6 +80,7 @@ namespace Kuzey.UI.Web
 
             services.AddScoped<IRepository<Category, int>, CategoryRepo>();
             services.AddScoped<IRepository<Product, string>, ProductRepo>();
+            services.AddScoped<MembershipTools, MembershipTools>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
