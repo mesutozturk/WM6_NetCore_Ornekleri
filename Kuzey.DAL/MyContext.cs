@@ -40,6 +40,7 @@ namespace Kuzey.DAL
                 ((AuditEntity)(entity.Entity)).UpdatedUserId = userId;
                 ((AuditEntity)(entity.Entity)).UpdatedDate = DateTime.Now;
             }
+
             return base.SaveChanges();
         }
 

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28705.295
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ders1", "Ders1", "{5604A71A-5626-4BEC-82EE-51B29564BEB9}"
 EndProject
@@ -13,13 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityCore", "IdentityCor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ders3", "Ders3", "{64CAC477-C9ED-40CB-84D7-F55DD2F87B34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kuzey.UI.Web", "Kuzey.UI.Web\Kuzey.UI.Web.csproj", "{5F51BF46-FCB3-4E89-A062-B337D07A8141}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kuzey.UI.Web", "Kuzey.UI.Web\Kuzey.UI.Web.csproj", "{5F51BF46-FCB3-4E89-A062-B337D07A8141}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kuzey.Models", "Kuzey.Models\Kuzey.Models.csproj", "{5B9C6367-3D63-4103-9901-B3D8A9F30920}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kuzey.Models", "Kuzey.Models\Kuzey.Models.csproj", "{5B9C6367-3D63-4103-9901-B3D8A9F30920}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kuzey.DAL", "Kuzey.DAL\Kuzey.DAL.csproj", "{95B4E946-CE3B-45EA-ADC7-A615775CD9A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kuzey.DAL", "Kuzey.DAL\Kuzey.DAL.csproj", "{95B4E946-CE3B-45EA-ADC7-A615775CD9A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kuzey.BLL", "Kuzey.BLL\Kuzey.BLL.csproj", "{BD7C47FB-6CC6-458D-B138-72F4401FC13B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kuzey.BLL", "Kuzey.BLL\Kuzey.BLL.csproj", "{BD7C47FB-6CC6-458D-B138-72F4401FC13B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
