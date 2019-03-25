@@ -4,6 +4,7 @@ using Kuzey.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Kuzey.UI.Web.Controllers.Api
@@ -25,19 +26,8 @@ namespace Kuzey.UI.Web.Controllers.Api
         public IActionResult Get()
         {
             var data = _productRepo.GetAll().Include(x => x.Category)
-                .Select(x => new ProductViewModel()
-                {
-                    Id = x.Id,
-                    CategoryName = x.Category.CategoryName,
-                    CategoryId = x.CategoryId,
-                    CreatedDate = x.CreatedDate,
-                    CreatedUserId = x.CreatedUserId,
-                    UnitPrice = x.UnitPrice,
-                    ProductName = x.ProductName,
-                    UpdatedDate = x.UpdatedDate,
-                    UpdatedUserId = x.UpdatedUserId
-                })
-                .ToList();
+                .ToList()
+                .Select(Mapper.Map<Product, ProductViewModel>);
             return Ok(data);
         }
 

@@ -10,10 +10,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Text;
+using AutoMapper;
 using Kuzey.BLL.Account;
 using Kuzey.BLL.Repository;
 using Kuzey.BLL.Repository.Abstracts;
 using Kuzey.Models.Entities;
+using Kuzey.Models.ViewModels;
 using Kuzey.UI.Web.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -70,10 +72,12 @@ namespace Kuzey.UI.Web
                     Configuration.GetConnectionString("DefaultConnection")));
 
             //services.AddIdentity<ApplicationUser, ApplicationRole>()
+            //    .AddDefaultTokenProviders()
             //    .AddEntityFrameworkStores<MyContext>();
 
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddRoles<ApplicationRole>()
+                .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<MyContext>();
 
             services.Configure<IdentityOptions>(options =>
@@ -115,6 +119,10 @@ namespace Kuzey.UI.Web
 
             services.AddCors();
 
+            services.AddAutoMapper();
+
+            Mapper.Initialize(cfg => MapConfig(cfg));
+
             services.AddMvc()
                 .AddJsonOptions(options =>
                 {
@@ -122,6 +130,13 @@ namespace Kuzey.UI.Web
                         new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+        }
+
+        private void MapConfig(IMapperConfigurationExpression cfg)
+        {
+            cfg.CreateMap<Product, ProductViewModel>()
+                .ForMember(dest => dest.CategoryName, opt => opt
+                    .MapFrom(src => src.Category != null ? src.Category.CategoryName : null));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
