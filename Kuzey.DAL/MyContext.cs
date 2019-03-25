@@ -27,7 +27,7 @@ namespace Kuzey.DAL
         {
             var selectedEntityList = ChangeTracker.Entries()
                 .Where(x => x.Entity is AuditEntity && x.State == EntityState.Added);
-            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
             
             foreach (var entity in selectedEntityList)
             {
